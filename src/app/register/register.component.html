@@ -1,4 +1,5 @@
 <h2 class="h1 my-4">Register Now : </h2>
+<div *ngIf="apiError" class="alert alert-danger">{{apiError}}</div>
 <form (ngSubmit)="handleRegister(registerForm)" [formGroup]="registerForm">
 
     <label for="name">name</label>
@@ -61,6 +62,9 @@
     </div>
 
 
-  <button type="submit" class="d-block btn border-0 bg-main ms-auto" [disabled]="registerForm.invalid">Register</button>
+  <button type="submit" class="d-block btn border-0 bg-main ms-auto" [disabled]="registerForm.invalid">
+    <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
+    <span *ngIf="!isLoading">Register</span>
+  </button>
 
 </form>

@@ -1,1 +1,24 @@
-<p>cart works!</p>
+<div class=" py-3 my-3 p-3">
+  <h3 class="">Shop Cart</h3>
+  <h4 class="py-3 text-main h6">Total Price : {{ cartItems?.totalCartPrice }}</h4>
+  <div
+    class="row align-items-center my-4 p-3 bg-light"
+    *ngFor="let item of cartItems?.products"
+  >
+    <div class="col-2">
+      <img class="w-100" [src]="item?.product?.imageCover" alt="" />
+    </div>
+    <div class="col-10 d-flex justify-content-between">
+        <div>
+          <h4 class="h5">{{ item?.product?.title }}</h4>
+          <span class="text-main d-block">Price : {{ item?.price }} EGP</span>
+          <button (click)="removeFromCart(item?.product?._id)" class="btn cursor-pointer"><i class="fas fa-trash-can text-main "></i> Remove</button>
+       </div>
+       <div class="d-flex align-items-center">
+          <button (click)="updateQuantity(item?.product?._id , item?.count + 1)" class="btn btn-outline-success fs-2">+</button>
+          <span class="px-3 fs-4">{{ item?.count }}</span>
+          <button (click)="updateQuantity(item?.product?._id , item?.count - 1)" class="btn btn-outline-success fs-2">-</button>
+       </div>
+    </div>
+  </div>
+</div>

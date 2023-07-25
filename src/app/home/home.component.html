@@ -1,1 +1,28 @@
-<p>home works!</p>
+
+<app-mainslider></app-mainslider>
+<app-categories-slider></app-categories-slider>
+<div class="col-8 py-4 m-auto">
+  <input type="text" [(ngModel)]="search" class="form-control" placeholder="Search By Name">
+</div>
+<div class="row">
+  <div  *ngFor="let product of productsItems|search:search" class="col-md-2">
+    <div class="product px-2 py-4">
+        <a [routerLink]="['/productDetails',product.id]">
+        <img class="w-100 h-100 " [src]="product.imageCover" alt="product">
+        <div>
+          <h3 class="text-main h6 fs-6 fw-bold py-2 ">{{product.category.name}}</h3>
+          <span class="pb-2 fs-5 fw-bolder">{{product.title.split(" ").slice(0,2).join(" ")}}</span>
+        </div>
+
+        <div class="d-flex align-items-center justify-content-between py-2">
+          <span class="text-muted fw-bolder">{{product.price}} EGP</span>
+          <div>
+            <i class="fas fa-star rating-color"></i>
+            <span>{{product.ratingsAverage}}</span>
+          </div>
+        </div>
+      </a>
+        <button (click)="addToCart(product.id)" class="btn bg-main text-white w-100 ">Add</button>
+      </div>
+  </div>
+</div>

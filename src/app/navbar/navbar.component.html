@@ -1,49 +1,50 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
     <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img src="assets/finalProject assets/freshcart-logo.svg" alt="logo"></a>
+    <a class="navbar-brand" routerLink="#"><img src="assets/finalProject assets/freshcart-logo.svg" alt="logo"></a>
     <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavId">
       <ul class="navbar-nav me-auto mt-2 mt-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" href="home" aria-current="page">Home <span class="visually-hidden">(current)</span></a>
+        <li *ngIf="isLogin" class="nav-item">
+          <a class="nav-link active" routerLink="home" aria-current="page">Home <span class="visually-hidden">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="cart" aria-current="page">Cart <span class="visually-hidden">(current)</span></a>
+        <li *ngIf="isLogin" class="nav-item">
+          <a class="nav-link active" routerLink="cart" aria-current="page">Cart <span class="visually-hidden">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="products" aria-current="page">Products <span class="visually-hidden">(current)</span></a>
+        <li  *ngIf="isLogin" class="nav-item">
+          <a class="nav-link active" routerLink="product" aria-current="page">Products <span class="visually-hidden">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="categories" aria-current="page"> Categories <span class="visually-hidden">(current)</span></a>
+        <li *ngIf="isLogin"  class="nav-item">
+          <a class="nav-link active" routerLink="categories" aria-current="page"> Categories <span class="visually-hidden">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="brands" aria-current="page"> Brands <span class="visually-hidden">(current)</span></a>
+        <li *ngIf="isLogin" class="nav-item">
+          <a class="nav-link active" routerLink="brands" aria-current="page"> Brands <span class="visually-hidden">(current)</span></a>
         </li>
       </ul>
       <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
         <li class="nav-item d-flex align-items-center">
-            <i class="fab mx-2 fa-instagram" ></i>
-            <i class="fab mx-2 fa-facebook" ></i>
-            <i class="fab mx-2 fa-tiktok" ></i>
-            <i class="fab mx-2 fa-twitter" ></i>
-            <i class="fab mx-2 fa-linkedin" ></i>
-            <i class="fab mx-2 fa-youtube" ></i>
+            <i class="fab mx-2 fa-instagram cursor-pointer" ></i>
+            <i class="fab mx-2 fa-facebook cursor-pointer" ></i>
+            <i class="fab mx-2 fa-tiktok cursor-pointer" ></i>
+            <i class="fab mx-2 fa-twitter cursor-pointer" ></i>
+            <i class="fab mx-2 fa-linkedin cursor-pointer" ></i>
+            <i class="fab mx-2 fa-youtube cursor-pointer" ></i>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="login" aria-current="page"> Login <span class="visually-hidden">(current)</span></a>
+        <li *ngIf="!isLogin" class="nav-item">
+          <a class="nav-link active" routerLink="login" aria-current="page"> Login <span class="visually-hidden">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="register" aria-current="page"> Register <span class="visually-hidden">(current)</span></a>
+        <li *ngIf="!isLogin" class="nav-item">
+          <a class="nav-link active" routerLink="register" aria-current="page"> Register <span class="visually-hidden">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="" aria-current="page"> SignOut <span class="visually-hidden">(current)</span></a>
+        <li *ngIf="isLogin" class="nav-item">
+          <span class="nav-link active cursor-pointer" (click)="logOut()" aria-current="page"> LogOut <span class="visually-hidden">(current)</span></span>
+        </li>
+        <li *ngIf="isLogin" class="nav-item">
+          <span class="nav-link active cursor-pointer" routerLink="settings"   aria-current="page"> Settings <span class="visually-hidden">(current)</span></span>
         </li>
       </ul>
-
-
     </div>
   </div>
 </nav>
