@@ -27,7 +27,11 @@ products(){
 
 addToCart(productId:string){
   this._CartService.addToCart(productId).subscribe({
-    next:(res)=>console.log(res),
+    next:(res)=>{console.log(res);
+      this._CartService.cartId.next(res.data._id);
+    }
+
+
 
   })
 }

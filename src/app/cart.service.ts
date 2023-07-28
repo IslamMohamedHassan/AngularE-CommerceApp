@@ -1,12 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
+  cartId = new BehaviorSubject(0);
+  cartNumber = new BehaviorSubject(0);
   constructor(private _HttpClient : HttpClient) {
 
+    this.getCart().subscribe({
+      next:(res)=>{console.log(res.data)
+      this.cartId.next(res.data._id)
+      }
+    })
   }
 
 
@@ -34,6 +41,13 @@ export class CartService {
     return this._HttpClient.put(`https://route-ecommerce.onrender.com/api/v1/cart/${productId}`,
     {count:count},
     {headers:this.header})
+  }
+
+  onlinePayment(shippingAddress:any,cartId:string):Observable<any>{
+    return this._HttpClient.post(`https://route-ecommerce.onrender.com/api/v1/orders/checkout-session/${cartId}?url=http://localhost:4200`,
+    {shippingAddress:shippingAddress }
+    ,{headers:this.header}
+    )
   }
 
 

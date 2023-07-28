@@ -10,6 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { authGuard } from './auth.guard';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { CheckOutComponent } from './check-out/check-out.component';
 
 const routes: Routes = [
   {path:"",redirectTo:"home",pathMatch:'full'},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:"categories",canActivate:[authGuard],component:CategoriesComponent},
   {path:"cart",canActivate:[authGuard],component:CartComponent},
   {path:"brands",canActivate:[authGuard],component:BrandsComponent},
+  {path:"checkout",canActivate:[authGuard],component:CheckOutComponent},
   {path:"login",component:LoginComponent},
   {path:"productDetails/:id",canActivate:[authGuard],component:ProductDetailsComponent},
   {path:"register",component:RegisterComponent},
